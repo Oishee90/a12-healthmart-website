@@ -1,12 +1,14 @@
 
 import { Link, NavLink, } from 'react-router-dom';
 import logo from '../../assets/ea7fa191a0b2cd2e41448c80aebff3da.png'
-
+import { Tooltip } from 'react-tooltip'
 import { useState } from 'react';
+import UseAthenticate from '../../hook/UseAthenticate';
 
 const Navbar = () => {
+    const {logOut,user} = UseAthenticate()
     const [language, setLanguage] = useState('en');
-
+console.log(user)
     const changeLanguage = (event) => {
       setLanguage(event.target.value);
       console.log(`Language changed to: ${event.target.value}`);
@@ -59,7 +61,7 @@ const Navbar = () => {
     
 
   
-  {/* {user? <div className="flex items-center gap-1">
+  {user? <div className="flex items-center gap-1">
     <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
     <div className="w-10 rounded-full my-anchor-element ">
@@ -88,7 +90,7 @@ const Navbar = () => {
  
  </div>
  
-  </div>: */}
+  </div>:
 
 <div className="dropdown dropdown-end ml-2">
     
@@ -106,7 +108,7 @@ const Navbar = () => {
 
   </ul>
 </div>
-{/* } */}
+}
 
 </div>
 </div> 
