@@ -50,7 +50,7 @@ const Footer = () => {
     </div>
   </nav> 
   <aside>
-    <p className='text-white font-bold'>Copyright © 2024 - All right reserved by FoodshareHub</p>
+    <p className='text-white font-bold'>Copyright © 2024 - All right reserved by HealthMart</p>
   </aside>
 </footer>
     </div>

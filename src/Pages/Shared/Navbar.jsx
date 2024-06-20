@@ -1,7 +1,7 @@
 
 import { Link, NavLink, } from 'react-router-dom';
 import logo from '../../assets/ea7fa191a0b2cd2e41448c80aebff3da.png'
-import { PiDotsThreeCircleVerticalFill } from "react-icons/pi";
+
 import { useState } from 'react';
 
 const Navbar = () => {
