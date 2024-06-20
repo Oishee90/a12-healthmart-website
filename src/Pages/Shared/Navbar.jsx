@@ -16,7 +16,16 @@ const Navbar = () => {
     <li className={`font-oswald text-xs lg:text-lg ml-5  `} id="sidebar"><NavLink to={"/availableFood"}>Shop</NavLink></li>
     <li className={`font-oswald text-xs lg:text-lg ml-5  `}id="sidebar" ><NavLink to={"/addFood"}> Cart</NavLink></li>
 
-   
+    <div className="language-selector font-oswald text-xs lg:text-lg ml-5 mt-2  font-oswald ">
+            <label htmlFor="language" className="bg-white ">Choose a language: </label>
+            <select id="language" value={language} onChange={changeLanguage} className="select-language">
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="zh">Chinese</option>
+            </select>
+          </div>
     
     
   </>
@@ -48,16 +57,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end flex items-center gap-4">
     
-  <div className="language-selector p-2 font-oswald bg-blue-50">
-            <label htmlFor="language" className="bg-white ">Choose a language: </label>
-            <select id="language" value={language} onChange={changeLanguage} className="select-language">
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="zh">Chinese</option>
-            </select>
-          </div>
+
   
   {/* {user? <div className="flex items-center gap-1">
     <div className="dropdown dropdown-end">
@@ -94,8 +94,8 @@ const Navbar = () => {
     
   <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
     <div className="w-10 rounded-full">
-      <button className="md:h-full h-8 w-full">
-        <PiDotsThreeCircleVerticalFill className={`h-full w-full bg-white  text-[#285073] `}></PiDotsThreeCircleVerticalFill>
+      <button className="md:h-full h-8 w-full text-white  bg-[#285073]"> Join Us
+       
       </button>
     </div>
   </div>

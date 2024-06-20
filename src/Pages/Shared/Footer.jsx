@@ -29,7 +29,7 @@ const Footer = () => {
             <h3 className="py-2 font-bold font-raleway text-black ">Phone Number : (+62) 123-321-543</h3></div>
             <div className="flex  items-center gap-2 mt-0">
               <MdMarkEmailRead  className="text-[#0E2954] fill-current font-extrabold w-[24px] h-[24px]"></MdMarkEmailRead >
-              <h3 className="py-2 font-bold font-raleway text-black ">Email : foodking12@support.com</h3></div>
+              <h3 className="py-2 font-bold font-raleway text-black ">Email : healthmart11@support.com</h3></div>
               <div className="flex  items-center gap-2 mt-0">
               <MdOutlineAddLocationAlt  className="text-[#0E2954]  fill-current font-extrabold w-[24px] h-[24px]"></MdOutlineAddLocationAlt >
               <h3 className="py-2 font-bold font-raleway text-black ">Location : 152/1 Mohakhali Wireless Gate</h3></div>
