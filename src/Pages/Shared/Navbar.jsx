@@ -74,21 +74,15 @@ console.log(user)
 
   </div>
   <ul tabIndex={0} className="mt-3 z-[1]  p-2 shadow menu menu-sm dropdown-content bg-green-50  rounded-box w-52">
-    <li className="hover:bg-[#86469C] hover:rounded-xl text-black hover:text-white font-raleway fon-bold">
-      <a className="justify-between mb-2">
-      {user?.displayName||'user name not found'}
-        
-      </a>
-    </li >
-    <li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">{user?.email || 'user email not found'}</a></li>
+    
+   
+    <Link to={"/updateProfile"}> <li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">Update Profile</a></li></Link>
+    <Link ><li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">Dashboard</a></li></Link>
+    <Link  onClick={logOut} ><li className={` hover:rounded-xl text-black  hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">{}LogOut</a></li></Link>
    
   </ul>
 </div>
-<div className="dropdown dropdown-end ml-2">
 
-<div onClick={logOut}  className="btn font-raleway bg-[#FC4100] text-xs md:text-base text-medium  text-white ">{}LogOut</div>
- 
- </div>
  
   </div>:
 

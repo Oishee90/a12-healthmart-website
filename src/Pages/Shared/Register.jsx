@@ -16,7 +16,7 @@ const Register = () => {
   const [showpassword, setShowpassword] = useState(false)
 
   console.log(user)
-  const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY;
+  const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
   const {
     register,                                       
@@ -60,21 +60,22 @@ const Register = () => {
 
       // Create user in Firebase
       await createUser(email, password);
-
-      // Update user profile with name and image URL
-      await updateUserProfile(fullName, imageUrl);
-
-      // Store user role in the user object
       const userInfo = {
         email,
         fullName,
         imageUrl,
         role
       };
-      console.log(userInfo);
+      // Update user profile with name and image URL
+      await updateUserProfile(fullName, imageUrl);
+
+      // Store user role in the user object
+    
 
       // Navigate to specified form or route
       navigate(form);
+    
+      console.log(userInfo);
       toast.success('Account created successfully!');
     } catch (error) {
       console.error('Error creating account:', error);
