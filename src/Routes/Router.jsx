@@ -9,6 +9,10 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import UpdateProfile from "../Pages/Shared/UpdateProfile";
 import CategoryDetails from "../Pages/Home/CategoryDetails";
 import MedicineModal from "../Pages/Home/MedicineModal";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Shop from "../Pages/Shop";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../Pages/Cart";
 
 export const router = createBrowserRouter([
     {
@@ -30,7 +34,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "/categories/:categoryName",
-            element:<CategoryDetails></CategoryDetails>,
+            element:<PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
            
           },
           {
@@ -42,7 +46,23 @@ export const router = createBrowserRouter([
             path: "/register",
             element:<Register></Register> ,
           },
+          {
+            path: "/shop",
+            element:<Shop></Shop> ,
+          },
+          {
+            path: "/cart",
+            element:<Cart></Cart> ,
+          },
+       
       ],
     },
+    {
+      path:'dashboard',
+      element: <Dashboard></Dashboard>,
+      errorElement: <ErrorPage></ErrorPage>,
+    
+
+    }
   ]);
 

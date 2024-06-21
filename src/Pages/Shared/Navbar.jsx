@@ -4,10 +4,13 @@ import logo from '../../assets/ea7fa191a0b2cd2e41448c80aebff3da.png'
 import { Tooltip } from 'react-tooltip'
 import { useState } from 'react';
 import UseAthenticate from '../../hook/UseAthenticate';
+import { FaCartPlus } from "react-icons/fa";
+import useCart from '../../hook/useCart';
 
 const Navbar = () => {
     const {logOut,user} = UseAthenticate()
     const [language, setLanguage] = useState('en');
+    const [cart] = useCart()
 console.log(user)
     const changeLanguage = (event) => {
       setLanguage(event.target.value);
@@ -15,8 +18,13 @@ console.log(user)
     };
     const navlinks = <>
     <li className={`font-oswald text-xs lg:text-lg ml-5   `}  id="sidebar"><NavLink to={"/"}>Home</NavLink></li>
-    <li className={`font-oswald text-xs lg:text-lg ml-5  `} id="sidebar"><NavLink to={"/availableFood"}>Shop</NavLink></li>
-    <li className={`font-oswald text-xs lg:text-lg ml-5  `}id="sidebar" ><NavLink to={"/addFood"}> Cart</NavLink></li>
+    <li className={`font-oswald text-xs lg:text-lg ml-5  `} id="sidebar"><NavLink to={"/shop"}>Shop</NavLink></li>
+    <li className={`font-oswald text-xs lg:text-lg ml-5  `}id="sidebar" ><NavLink to={"/cart"}> 
+    <button className="  " >
+  Cart 
+  <div className="badge badge-secondary mrl-2"><FaCartPlus className='h-4' /> +{cart.length}</div>
+</button>
+    </NavLink></li>
 
     <div className="language-selector font-oswald text-xs lg:text-lg ml-5 mt-2  font-oswald ">
             <label htmlFor="language" className="bg-white ">Choose a language: </label>
@@ -77,7 +85,7 @@ console.log(user)
     
    
     <Link to={"/updateProfile"}> <li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">Update Profile</a></li></Link>
-    <Link ><li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">Dashboard</a></li></Link>
+    <Link to={"/dashboard"} ><li className={` hover:rounded-xl text-black hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">Dashboard</a></li></Link>
     <Link  onClick={logOut} ><li className={` hover:rounded-xl text-black  hover:bg-[#86469C] hover:text-white font-raleway fon-bold`}><a className="mb-2">{}LogOut</a></li></Link>
    
   </ul>
