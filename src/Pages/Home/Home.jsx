@@ -44,9 +44,9 @@ const Home = () => {
             <Banner></Banner>
             <div className=" mt-32 mb-30 ">
            <div className='flex flex-col justify-center' data-aos="fade-up">
-          <h1 className='text-center  p-5 text-4xl font-oswald font-semiboldbold'>Our Featured Foods</h1>
-          <div className='justify-center mx-auto border-b-2 h-px w-[81px]  border-green-700 '></div>
-          <p className='text-center p-5 mx-auto mb-6 text-lg font-raleway '>At FoodShareHub,Explore our curated selection of featured foods, handpicked to delight your taste buds and nourish your body.Dive in and discover your new favorite dish today.</p>
+          <h1 className='text-center  p-5 text-4xl font-oswald font-semiboldbold'>Explore Our Categories</h1>
+          <div className='justify-center mx-auto border-b-2 h-px w-[81px]  border-blue-700 '></div>
+          <p className='text-center p-5 mx-auto mb-6 text-lg font-raleway '> Discover a wide range of categories offering essential medicines and health products. Each category card showcases its name, a preview image, and the number of available medicines. </p>
         
       </div>
         

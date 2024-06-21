@@ -7,6 +7,8 @@ import Login from "../Pages/Shared/Login";
 import Register from "../Pages/Shared/Register";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import UpdateProfile from "../Pages/Shared/UpdateProfile";
+import CategoryDetails from "../Pages/Home/CategoryDetails";
+import MedicineModal from "../Pages/Home/MedicineModal";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +27,16 @@ export const router = createBrowserRouter([
         {
             path: "/login",
             element:<Login></Login> ,
+          },
+          {
+            path: "/categories/:categoryName",
+            element:<CategoryDetails></CategoryDetails>,
+           
+          },
+          {
+            path: "/sellermedicine/:id",
+            element:<MedicineModal></MedicineModal>,
+           
           },
           {
             path: "/register",
