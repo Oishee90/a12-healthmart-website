@@ -73,14 +73,14 @@ return(
            <div className="flex md:flex-row flex-col gap-6">
                <div className="join flex-col gap-2 ">
                    <label className="font-raleway font-bold text-xl">Category Name</label>
-                   <input className="input input-bordered join-item w-full" type="text" name="categoryName" placeholder="Enter Food Name"/>
+                   <input className="input input-bordered join-item w-full" type="text" name="categoryName" placeholder="Enter Category Name"/>
                </div>
            
            </div>
            <div className="flex md:flex-row flex-col gap-6 mt-5">
                <div className="join flex-col gap-2">
                    <label className="font-raleway font-bold text-xl">Category Image</label>
-                   <input className="input input-bordered join-item w-full" type="text" name="categoryImage" placeholder="Enter Food Quantity"/>
+                   <input className="input input-bordered join-item w-full" type="text" name="categoryImage" placeholder="Enter Image"/>
                </div>
              
            </div>
