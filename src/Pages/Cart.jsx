@@ -8,18 +8,18 @@ import useAxiosSecure from "../hook/useAxiosSecure";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
-    const [cart,refetch] = useCart();
-    const [localCart, setLocalCart] = useState(cart);
+    const [cart,refetch] = useCart([]);
+    const [localCart, setLocalCart] = useState([]);
     const axiosSecure = useAxiosSecure()
     const totalPrice = localCart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
     useEffect(() => {
-        // Initialize local cart with default quantity of 1 if not present
+        // Initialize localCart with default quantity of 1 if not present
         const initializedCart = cart.map(item => ({
-            ...item,
-            quantity: item.quantity || 1,
+          ...item,
+          quantity: item.quantity || 1,
         }));
         setLocalCart(initializedCart);
-    }, [cart]);
+      }, [cart]);
     const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
@@ -89,7 +89,7 @@ const Cart = () => {
 </div>
 </div>
 <div className="text-4xl text-center font-oswald mt-4"> My Cart</div>
-<div className='justify-center mx-auto border-b-2 h-px w-[95px]  mt-2 border-[#2d9496a2]'></div>
+<div className='justify-center mx-auto border-b-2 h-px w-[95px]  border-[#2d9496a2]'></div>
 <div className=" flex container mx-auto mt-20    justify-between">
         
            <h2 className="text-4xl font-bold">Total Price {totalPrice}</h2>

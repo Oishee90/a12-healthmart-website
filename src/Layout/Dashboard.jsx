@@ -5,10 +5,12 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { FaShopify } from "react-icons/fa";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { GiKnightBanner } from "react-icons/gi";
+import useAdmin from "../hook/useAdmin";
+import useSeller from "../hook/useSeller";
 
 const Dashboard = () => {
-    const isAdmin = true
-    const isSeller = true
+    const [isAdmin] = useAdmin()
+    const [isSeller] = useSeller()
     return (
         <div className="flex container mx-auto">
             <div className="drawer lg:drawer-open">
@@ -56,13 +58,13 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/sellerHome"><FaHome />Seller Home</NavLink>
             </li>
             <li className="text-xl font-oswald font-bold text-black mt-5 hover:bg-blue-600 hover:text-white hover:rounded">
-                <NavLink to="/dashboard/addProduct"><AiFillMedicineBox />Add Product</NavLink>
+                <NavLink to="/dashboard/"><AiFillMedicineBox />Manage Medicines</NavLink>
             </li>
             <li className="text-xl font-oswald font-bold text-black mt-5 hover:bg-blue-600 hover:text-white hover:rounded">
-                <NavLink to="/dashboard/manageProducts"><FaList />Manage Products</NavLink>
+                <NavLink to="/dashboard/"><FaList />Payment History</NavLink>
             </li>
             <li className="text-xl font-oswald font-bold text-black mt-5 hover:bg-blue-600 hover:text-white hover:rounded">
-                <NavLink to="/dashboard/sellerSales"><FaList />Sales Report</NavLink>
+                <NavLink to="/dashboard/"><FaList />Ask For Advertisement</NavLink>
             </li>
         </>
     ) : (

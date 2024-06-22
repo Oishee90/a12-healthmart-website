@@ -14,6 +14,7 @@ import Shop from "../Pages/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Cart";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
+import AdminRout from "./AdminRout";
 
 export const router = createBrowserRouter([
     {
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
         // admin routes
         {
           path: "manageUser",
-          element:<ManageUser></ManageUser>,
+          element:<AdminRout><ManageUser></ManageUser></AdminRout>,
         },
       ]
     

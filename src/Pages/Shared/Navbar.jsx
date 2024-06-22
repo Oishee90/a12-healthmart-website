@@ -20,7 +20,7 @@ console.log(user)
     <li className={`font-oswald text-xs lg:text-lg ml-5   `}  id="sidebar"><NavLink to={"/"}>Home</NavLink></li>
     <li className={`font-oswald text-xs lg:text-lg ml-5  `} id="sidebar"><NavLink to={"/shop"}>Shop</NavLink></li>
     <li className={`font-oswald text-xs lg:text-lg ml-5  `}id="sidebar" ><NavLink to={"/cart"}> 
-    <button className="  " >
+    <button className=" bg-white " id="sidebar">
   Cart 
   <div className="badge badge-secondary mrl-2"><FaCartPlus className='h-4' /> +{cart.length}</div>
 </button>
