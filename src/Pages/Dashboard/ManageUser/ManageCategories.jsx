@@ -2,7 +2,7 @@ import  { useEffect, useState } from 'react';
 import { IoBagAddSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
-import { Link } from 'react-router-dom';
+import AddCategory from './AddCategory';
 import CategoriesUpdate from '../CategoriesUpdate';
 
 
@@ -11,6 +11,7 @@ const ManageCategories = () => {
     const [categories, setCategories] = useState([])
     const [selectedCategories, setSelectedCategories] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [control,setControl]=useState(false)
     useEffect(() => {
         fetch("http://localhost:5002/categories")
@@ -22,9 +23,7 @@ const ManageCategories = () => {
                 .catch(error => console.error('Error fetching food data:', error));
         }, []);
         console.log(categories)
-        const handleAddCategory = () => {
-            // Implement logic to add a new category (show modal, handle form submission, etc.)
-          };
+     
         
         
           const handleDeleteCategory = async (id) => {
@@ -59,6 +58,29 @@ const ManageCategories = () => {
             }
         
             };
+            const handleAddCategory = async (newCategory) => {
+                try {
+                  const { data } = await axiosSecure.post("/categories", newCategory);
+                  if (data.insertedId) {
+                    Swal.fire({
+                      title: 'Success!',
+                      text: 'Category added successfully',
+                      icon: 'success',
+                      confirmButtonText: 'Cool'
+                    });
+                    setControl(!control);
+                  }
+                } catch (err) {
+                  console.error('Error adding category:', err);
+                  Swal.fire({
+                    title: 'Error!',
+                    text: 'Something went wrong',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                  });
+                }
+              };
+            
 // update
 const openModal = (category) => {
     setSelectedCategories(category);
@@ -68,6 +90,13 @@ const openModal = (category) => {
   const closeModal = () => {
     setSelectedCategories(null);
     setIsModalOpen(false);
+  };
+  const openAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
+  const closeAddModal = () => {
+    setIsAddModalOpen(false);
   };
     return (
         <div className="flex">
@@ -114,7 +143,7 @@ const openModal = (category) => {
           {/* Add Category Button */}
           <button
             className="border-2 bg-blue-50 mt-5 text-xl font-oswald font-bold  flex gap-0 items-center rounded-3xl text-black border-blue-500 hover:bg-blue-600  py-2 px-4 "
-            onClick={handleAddCategory}
+            onClick={openAddModal}
           ><IoBagAddSharp />
             Add Category
           </button>
@@ -128,6 +157,11 @@ const openModal = (category) => {
           control={control}
         />
       )}
+         <AddCategory
+        isOpen={isAddModalOpen}
+        onClose={closeAddModal}
+        onAdd={handleAddCategory}
+      />
       </div>
     );
 };
