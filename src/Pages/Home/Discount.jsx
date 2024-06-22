@@ -13,7 +13,7 @@ const Discount = () => {
 
   useEffect(() => {
     // Fetch all medicines and filter those with a discount
-    fetch('http://localhost:5002/sellermedicine')
+    fetch('https://medicine-selling-server-tau.vercel.app/sellermedicine')
       .then((res) => res.json())
       .then((data) => {
         const discounted = data.filter((medicine) => medicine.discount > 0);

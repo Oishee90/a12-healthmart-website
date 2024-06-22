@@ -13,7 +13,7 @@ const Home = () => {
     const [filteredMedicines, setFilteredMedicines] = useState([]);
     const CategorieItems = categories.slice(0,6)
     useEffect(() => {
-    fetch("http://localhost:5002/categories")
+    fetch("https://medicine-selling-server-tau.vercel.app/categories")
             .then(res => res.json())
             .then(data => {
                
@@ -23,7 +23,7 @@ const Home = () => {
     }, []);
     console.log(CategorieItems)
     useEffect(() => {
-        fetch("http://localhost:5002/sellermedicine")
+        fetch("https://medicine-selling-server-tau.vercel.app/sellermedicine")
                 .then(res => res.json())
                 .then(data => {
                    

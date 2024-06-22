@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UseAthenticate from "./UseAthenticate";
 
 export const axiosSecure = axios.create({
- baseURL:'http://localhost:5002'
+ baseURL:'https://medicine-selling-server-tau.vercel.app'
 })
 
 const useAxiosSecure = () => {

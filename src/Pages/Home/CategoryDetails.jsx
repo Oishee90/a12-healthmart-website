@@ -21,7 +21,7 @@ const CategoryDetails = () => {
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
     // Fetch medicines for the selected category
-    fetch(`http://localhost:5002/sellermedicine?categoryName=${categoryName}`)
+    fetch(`https://medicine-selling-server-tau.vercel.app/sellermedicine?categoryName=${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         const filteredMedicines = data.filter((medicine) => medicine.categoryName === categoryName);
@@ -85,7 +85,7 @@ const CategoryDetails = () => {
     return (
 
         <div className="container mx-auto mt-20 bg-white min-h-screen">
-        <Helmet><title>FoodShareHub|MyFood</title></Helmet>
+        <Helmet><title>FoodShareHub|| Categorie Dettails</title></Helmet>
         <div data-aos="fade-down"
         className="hero h-[400px] rounded-sm"
         style={{ backgroundImage: `url(${bg})` }}

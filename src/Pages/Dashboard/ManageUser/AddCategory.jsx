@@ -42,7 +42,7 @@ const AddCategory = ({ isOpen, onClose, onAdd }) => {
 
     };
 //    console.log(info)
-   fetch("http://localhost:5002/categories", {
+   fetch("https://medicine-selling-server-tau.vercel.app/categories", {
 method: "POST",
 headers: { "Content-type": "application/json" },
 body: JSON.stringify(info)

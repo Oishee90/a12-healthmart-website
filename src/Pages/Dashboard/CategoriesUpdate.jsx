@@ -47,7 +47,7 @@ const CategoriesUpdate = ({ isOpen, onClose, category, setControl, control }) =>
             description
         };
     
-        fetch(`http://localhost:5002/categories/${categoryId}`, {
+        fetch(`https://medicine-selling-server-tau.vercel.app/categories/${categoryId}`, {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(info)

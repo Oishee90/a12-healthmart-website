@@ -22,7 +22,7 @@ const Shop = () => {
     const [,refetch] = useCart();
     useEffect(() => {
         // Fetch medicines for the selected category
-        fetch(`http://localhost:5002/sellermedicine`)
+        fetch(`https://medicine-selling-server-tau.vercel.app/sellermedicine`)
           .then((res) => res.json())
           .then((data) => {
            

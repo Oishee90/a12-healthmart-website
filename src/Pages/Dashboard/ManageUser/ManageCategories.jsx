@@ -14,7 +14,7 @@ const ManageCategories = () => {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [control,setControl]=useState(false)
     useEffect(() => {
-        fetch("http://localhost:5002/categories")
+        fetch("https://medicine-selling-server-tau.vercel.app/categories")
                 .then(res => res.json())
                 .then(data => {
                    
@@ -58,28 +58,7 @@ const ManageCategories = () => {
             }
         
             };
-            const handleAddCategory = async (newCategory) => {
-                try {
-                  const { data } = await axiosSecure.post("/categories", newCategory);
-                  if (data.insertedId) {
-                    Swal.fire({
-                      title: 'Success!',
-                      text: 'Category added successfully',
-                      icon: 'success',
-                      confirmButtonText: 'Cool'
-                    });
-                    setControl(!control);
-                  }
-                } catch (err) {
-                  console.error('Error adding category:', err);
-                  Swal.fire({
-                    title: 'Error!',
-                    text: 'Something went wrong',
-                    icon: 'error',
-                    confirmButtonText: 'Try Again'
-                  });
-                }
-              };
+         
             
 // update
 const openModal = (category) => {
@@ -160,7 +139,7 @@ const openModal = (category) => {
          <AddCategory
         isOpen={isAddModalOpen}
         onClose={closeAddModal}
-        onAdd={handleAddCategory}
+      
       />
       </div>
     );
