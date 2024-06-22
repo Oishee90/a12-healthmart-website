@@ -15,6 +15,8 @@ import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Cart";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import AdminRout from "./AdminRout";
+import ManageCategories from "../Pages/Dashboard/ManageUser/ManageCategories";
+
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +71,13 @@ export const router = createBrowserRouter([
           path: "manageUser",
           element:<AdminRout><ManageUser></ManageUser></AdminRout>,
         },
+        {
+          path: "manageCategories",
+          element:<AdminRout>
+            <ManageCategories></ManageCategories>
+            </AdminRout>,
+        },
+       
       ]
     
 

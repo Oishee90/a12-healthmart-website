@@ -4,7 +4,7 @@ import useSeller from "../hook/useSeller";
 
 
 const SellerRout = (children) => {
-    const [user,loading] = UseAthenticate()
+    const {user,loading} = UseAthenticate()
     const [isSeller, isSellerLoading] = useSeller()
     const location = useLocation();
     console.log(location)
@@ -17,7 +17,7 @@ const SellerRout = (children) => {
     }
    
     return (
-        <Navigate state={location.pathname} to="/login"></Navigate>
+        <Navigate state={location.pathname} to="/"></Navigate>
     );
 };
 
