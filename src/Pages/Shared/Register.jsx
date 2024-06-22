@@ -9,12 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import UseAthenticate from "../../hook/UseAthenticate";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 const Register = () => {
   const {createUser, updateUserProfile,user  } = UseAthenticate();
   const [showpassword, setShowpassword] = useState(false)
-
+const axiosPublic = useAxiosPublic();
   console.log(user)
   const image_hosting_key = import.meta.env.VITE_IMGBB_API_KEY
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -70,13 +71,18 @@ const Register = () => {
       await updateUserProfile(fullName, imageUrl);
 
       // Store user role in the user object
-    
+        axiosPublic.post('/users',userInfo)
+        .then(res => {
+          if(res.data.insertedId){
+            toast.success('Account created successfully!');
+          }
+        })
 
       // Navigate to specified form or route
       navigate(form);
     
       console.log(userInfo);
-      toast.success('Account created successfully!');
+    
     } catch (error) {
       console.error('Error creating account:', error);
       toast.error('Failed to create account');

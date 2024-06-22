@@ -13,6 +13,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Shop from "../Pages/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Cart";
+import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,13 @@ export const router = createBrowserRouter([
       path:'dashboard',
       element: <Dashboard></Dashboard>,
       errorElement: <ErrorPage></ErrorPage>,
+      children: [
+        // admin routes
+        {
+          path: "manageUser",
+          element:<ManageUser></ManageUser>,
+        },
+      ]
     
 
     }

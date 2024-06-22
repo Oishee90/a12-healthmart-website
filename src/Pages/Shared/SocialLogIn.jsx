@@ -4,22 +4,33 @@ import {  toast } from 'react-toastify';
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import UseAthenticate from "../../hook/UseAthenticate";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 
 
 const SocialLogIn = () => {
-    const {googleLogIn, githubLogIn} = UseAthenticate()
+    const {googleLogIn} = UseAthenticate()
+     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const location = useLocation()
     const form = location?.state ||"/";
     const handleSocialLogin = socialProvider => {
       socialProvider()
       .then (result => {
+       const userInfo = {
+        email: result.user?.email,
+        fullName:result.user?.displayName,
+        role: 'user'
+       }
+       axiosPublic.post('/users',userInfo)
+       .then(res =>{
         toast.success('Log in successfully!');
-        if(result.user){
-         navigate(form)
-        }
+       console.log(res.data)
+       })
+       if(result.user){
+        navigate(form)
+       }
       })
     }
     return (
