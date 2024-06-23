@@ -20,22 +20,27 @@ console.log(user)
     <li className={`font-oswald text-xs lg:text-lg ml-5   `}  id="sidebar"><NavLink to={"/"}>Home</NavLink></li>
     <li className={`font-oswald text-xs lg:text-lg ml-5  `} id="sidebar"><NavLink to={"/shop"}>Shop</NavLink></li>
     <li className={`font-oswald text-xs lg:text-lg ml-5  `}id="sidebar" ><NavLink to={"/cart"}> 
-    <button className=" bg-white " id="sidebar">
+    <button className=" bg-white text-black" id="sidebar">
   Cart 
-  <div className="badge badge-secondary mrl-2"><FaCartPlus className='h-4' /> +{cart.length}</div>
+  <div className="badge badge-secondary ml-2"><FaCartPlus className='h-4' /> +{cart.length}</div>
 </button>
     </NavLink></li>
+    <div className="font-oswald text-xs lg:text-lg ml-5 w-20">
 
-    <div className="language-selector font-oswald text-xs lg:text-lg ml-5 mt-2  font-oswald ">
-            <label htmlFor="language" className="bg-white ">Choose a language: </label>
-            <select id="language" value={language} onChange={changeLanguage} className="select-language">
-              <option value="en">English</option>
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="zh">Chinese</option>
-            </select>
-          </div>
+  <select
+    id="language"
+    value={language}
+    onChange={changeLanguage}
+    className="p-1 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-green-500"
+  >
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="de">German</option>
+    <option value="zh">Chinese</option>
+  </select>
+</div>
+
     
     
   </>

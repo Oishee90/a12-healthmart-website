@@ -52,7 +52,7 @@ const Login = () => {
     return (
   
         <div className="container mx-auto  mt-10 mb-10 ">
-         <Helmet><title>FoodShareHub|Login</title></Helmet>
+         <Helmet><title>HealthMart|Login</title></Helmet>
         <div className="hero flex lg:flex-row-reverse flex-col-reverse   md:flex-col-reverse min-h-screen bg-blue-50 " >
 <div className="text-center justify-start ml-4 w-1/2 mt-5 mb-5 h-full ">
 <h1 className="font-extrabold text-center text-xl md:text-4xl mb-3  font-ubuntu text-black">Login Now!!</h1>

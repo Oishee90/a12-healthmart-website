@@ -79,7 +79,7 @@ const FirebaseProvider = ({children}) => {
             
         });
         return () => unsubscribe();
-    },[])
+    },[axiosPublic])
 
 const allvalues = {createUser,
     updateUserProfile , 

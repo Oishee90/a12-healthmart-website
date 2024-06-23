@@ -17,7 +17,8 @@ import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import AdminRout from "./AdminRout";
 import ManageCategories from "../Pages/Dashboard/ManageUser/ManageCategories";
 import ManageMedicine from "../Pages/Dashboard/Seller/ManageMedicine";
-import SellerRout from "./SellerRout";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+
 
 
 export const router = createBrowserRouter([
@@ -68,6 +69,11 @@ export const router = createBrowserRouter([
       element: <Dashboard></Dashboard>,
       errorElement: <ErrorPage></ErrorPage>,
       children: [
+       
+        {
+          path: "payment",
+          element:<Payment></Payment> ,
+        },
         // admin routes
         {
           path: "manageUser",

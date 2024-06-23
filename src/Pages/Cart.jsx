@@ -6,12 +6,14 @@ import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hook/useAxiosSecure";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart,refetch] = useCart([]);
     const [localCart, setLocalCart] = useState([]);
     const axiosSecure = useAxiosSecure()
     const totalPrice = localCart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
+   
     useEffect(() => {
         // Initialize localCart with default quantity of 1 if not present
         const initializedCart = cart.map(item => ({
@@ -93,8 +95,10 @@ const Cart = () => {
 <div className=" flex container mx-auto mt-20    justify-between">
         
            <h2 className="text-4xl font-bold">Total Price {totalPrice}</h2>
-           <button className="btn btn-primary mb-4 font-oswald">Pay</button>
-        </div>
+           {cart.length ? <Link to={"/dashboard/payment"}><button className="btn btn-primary mb-4 font-oswald">Pay</button></Link>:
+           <button disabled className="btn btn-primary mb-4 font-oswald">Pay</button>
+}
+       </div>
         <div className="overflow-x-auto">
         <table className="min-w-full border-collapse border border-gray-200 rounded-lg">
             <thead className=" bg-blue-50">
