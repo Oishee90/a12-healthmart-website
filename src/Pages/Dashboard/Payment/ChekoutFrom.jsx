@@ -9,12 +9,12 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure() ;
   const { user } =UseAthenticate();
-  const [cart] = useCart();
+  const [cart,refetch] = useCart();
   const [localCart, setLocalCart] = useState([]);
   const [clientSecret, setClientSecret] = useState('');
   const [error, setError] = useState('');
@@ -96,8 +96,8 @@ const CheckoutForm = () => {
       }
       const res = await axiosSecure.post('/payments',payment);
       console.log("payment saved", res.data)
-   
-    //   navigate('/invoice', { state: { transactionId: paymentIntent.id } })
+       refetch()
+      navigate('/dashboard/invoice',)
     } else {
       setError('Payment not successful');
     }
