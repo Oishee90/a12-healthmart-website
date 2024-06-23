@@ -58,7 +58,7 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/sellerHome"><FaHome />Seller Home</NavLink>
             </li>
             <li className="text-xl font-oswald font-bold text-black mt-5 hover:bg-blue-600 hover:text-white hover:rounded">
-                <NavLink to="/dashboard/"><AiFillMedicineBox />Manage Medicines</NavLink>
+                <NavLink to="/dashboard/manageMedicine"><AiFillMedicineBox />Manage Medicines</NavLink>
             </li>
             <li className="text-xl font-oswald font-bold text-black mt-5 hover:bg-blue-600 hover:text-white hover:rounded">
                 <NavLink to="/dashboard/"><FaList />Payment History</NavLink>

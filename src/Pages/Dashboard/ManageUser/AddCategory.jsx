@@ -4,7 +4,7 @@ import  { useState } from 'react';
 
 import Swal from 'sweetalert2';
 
-const AddCategory = ({ isOpen, onClose, onAdd }) => {
+const AddCategory = ({ isOpen, onClose }) => {
   const [categoryName, setCategoryName] = useState('');
   const [categoryImage, setCategoryImage] = useState('');
   const [description, setDescription] = useState('');

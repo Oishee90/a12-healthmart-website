@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
 import AddCategory from './AddCategory';
 import CategoriesUpdate from '../CategoriesUpdate';
+import { Helmet } from 'react-helmet-async';
 
 
 const ManageCategories = () => {
@@ -79,6 +80,7 @@ const openModal = (category) => {
   };
     return (
         <div className="flex">
+              <Helmet><title>HealthMart|ManageCategories</title></Helmet>
   
         {/* Main Content */}
         <div className="overflow-x-auto w-full">

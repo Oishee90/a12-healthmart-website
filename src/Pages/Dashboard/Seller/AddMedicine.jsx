@@ -147,17 +147,7 @@ const AddMedicine = ({ isOpen, onClose }) => {
                             ))}
                         </select>
                     </div>
-                    <div className="flex md:flex-row flex-col gap-6 mt-5">
-                        <div className="join flex-col gap-2 md:w-1/2">
-                            <label className="font-raleway font-bold text-xl">Your Email</label>
-                            <input className="input input-bordered join-item w-full" name="email" value={`${user.email}`} disabled style={{ color: 'black' }}/>
-                        
-                        </div>
-                        <div className="join flex-col gap-2 md:w-1/2">
-                            <label className="font-raleway font-bold text-xl">Your Name</label>
-                            <input className="input input-bordered join-item w-full" name="name" value={`${user.displayName}`} disabled style={{ color: 'black' }}/>
-                        </div>
-                    </div>
+
             
                <input className="btn btn-block fomt-raleway font-bold mt-5 bg-green-800 hover:bg-green-900 text-white" type="submit" value="Add Category" />
     

@@ -88,7 +88,7 @@ const Shop = () => {
       }
     return (
         <div className="container mx-auto mt-20 bg-white min-h-screen">
-        <Helmet><title>FoodShareHub|| Shop</title></Helmet>
+        <Helmet><title>HealthMart|| Shop</title></Helmet>
         <div data-aos="fade-down"
         className="hero h-[400px] rounded-sm"
         style={{ backgroundImage: `url(${bg})` }}

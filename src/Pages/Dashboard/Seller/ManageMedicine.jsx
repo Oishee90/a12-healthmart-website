@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { IoBagAddSharp } from "react-icons/io5";
 import AddMedicine from "./AddMedicine";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageMedicine = () => {
@@ -31,10 +32,10 @@ const ManageMedicine = () => {
           }
     return (
         <div className="flex">
-  
+    <Helmet><title>HealthMart|ManageMedicine</title></Helmet>
         {/* Main Content */}
         <div className="overflow-x-auto w-full">
-          <h1 className="text-2xl mb-4 font-oswald font-bold">Medicine </h1>
+          <h1 className="text-2xl  text-center mb-4 font-oswald font-bold">Medicine </h1>
   
      
           <table className="min-w-full font-raleway text-xl border-collapse border border-gray-200 rounded-lg">
@@ -76,7 +77,7 @@ const ManageMedicine = () => {
   
           {/* Add Category Button */}
           <button
-            className="border-2 bg-blue-50 mt-5 text-xl font-oswald font-bold  flex gap-0 items-center rounded-3xl text-black border-blue-500 hover:bg-blue-600  py-2 px-4 "
+            className="border-2 mx-auto justify-center bg-blue-50 mt-5 text-xl font-oswald font-bold  flex gap-0 items-center rounded-3xl text-black border-blue-500 hover:bg-blue-600  py-2 px-4 "
             onClick={openAddModal}
           ><IoBagAddSharp/>
             Add Category

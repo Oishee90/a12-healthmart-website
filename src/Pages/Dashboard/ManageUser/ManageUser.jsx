@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { GiConfirmed } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const ManageUser = () => {
     const axiosSecure = useAxiosSecure()
@@ -79,6 +80,7 @@ const ManageUser = () => {
       };
     return (
         <div className="mt-8">
+              <Helmet><title>HealthMart|Manage Users</title></Helmet>
               <h2 className="text-3xl font-oswald justify-center mx-auto text-center">Manage All Users</h2>
               <div className='justify-center mx-auto border-b-2 h-px w-[81px] mt-2  border-[#2d9496a2]'></div>
               
