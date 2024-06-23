@@ -6,8 +6,10 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import UseAthenticate from "../../../hook/UseAthenticate";
 import useCart from "../../../hook/useCart";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
+    // const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure() ;
@@ -81,6 +83,21 @@ const CheckoutForm = () => {
       setTransactionId(paymentIntent.id);
       Swal.fire('Success', 'Payment successful!', 'success');
       console.log('Payment successful:', paymentIntent);
+      const payment = {
+        email:user.email,
+        transactionId:paymentIntent.id,
+        price: totalPrice,
+        date: new Date(),
+        cartIds:cart.map(item => item._id),
+        medicineIds: cart.map(item => item.medicineId),
+        status:"pending"
+
+        
+      }
+      const res = await axiosSecure.post('/payments',payment);
+      console.log("payment saved", res.data)
+   
+    //   navigate('/invoice', { state: { transactionId: paymentIntent.id } })
     } else {
       setError('Payment not successful');
     }
