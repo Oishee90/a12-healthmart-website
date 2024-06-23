@@ -8,7 +8,15 @@ import UseAthenticate from "../../../hook/UseAthenticate";
 
 const AddMedicine = ({ isOpen, onClose }) => {
     const [categories, setCategories] = useState([]);
+    const [companies, setCompanies] = useState([]);
     const { user } = UseAthenticate();
+    useEffect(() => {
+        // Fetch categories
+        fetch('https://medicine-selling-server-tau.vercel.app/companies')
+            .then(res => res.json())
+            .then(data => setCompanies(data))
+            .catch(error => console.error('Error fetching companies:', error));
+    }, []);
 
     useEffect(() => {
         // Fetch categories
@@ -138,6 +146,7 @@ const AddMedicine = ({ isOpen, onClose }) => {
                         
                         </div>
                     </div>
+                    <div className="flex md:flex-row flex-col gap-6 mt-5">
                     <div className="join flex-col gap-2 md:w-1/2">
                         <label className="font-raleway font-bold text-xl">Category Name</label>
                         <select className="input input-bordered join-item w-full" name="categoryName">
@@ -147,9 +156,19 @@ const AddMedicine = ({ isOpen, onClose }) => {
                             ))}
                         </select>
                     </div>
+                    <div className="join flex-col gap-2 md:w-1/2">
+                        <label className="font-raleway font-bold text-xl">Category Name</label>
+                        <select className="input input-bordered join-item w-full" name="company">
+                            <option value="">Select Company</option>
+                            {companies.map((companie) => (
+                                <option key={companie._id} value={companie._id}>{companie.companyName}</option>
+                            ))}
+                        </select>
+                    </div>
+                    </div>
 
             
-               <input className="btn btn-block fomt-raleway font-bold mt-5 bg-green-800 hover:bg-green-900 text-white" type="submit" value="Add Category" />
+               <input className="btn btn-block fomt-raleway font-bold mt-5 bg-green-800 hover:bg-green-900 text-white" type="submit" value="Add Medicine" />
     
     
            </form>
