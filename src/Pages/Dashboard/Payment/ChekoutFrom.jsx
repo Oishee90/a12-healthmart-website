@@ -1,77 +1,88 @@
-
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import './CheckoutForm.css'
 import { useEffect, useState } from "react";
+
 import useAxiosSecure from "../../../hook/useAxiosSecure";
-import useCart from "../../../hook/useCart";
 import UseAthenticate from "../../../hook/UseAthenticate";
-const ChekoutFrom = () => {
+import useCart from "../../../hook/useCart";
+import Swal from "sweetalert2";
+
+const CheckoutForm = () => {
   const stripe = useStripe();
-  const [localCart, setLocalCart] = useState([]);
-  const [clientSecret, setClientSecret] = useState('')
-  const [error,setError] = useState('')
   const elements = useElements();
-  const axiosSecure = useAxiosSecure()
-  const {user} = UseAthenticate()
-  const [ cart ] =useCart()
-  const totalPrice = localCart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
-   
+  const axiosSecure = useAxiosSecure() ;
+  const { user } =UseAthenticate();
+  const [cart] = useCart();
+  const [localCart, setLocalCart] = useState([]);
+  const [clientSecret, setClientSecret] = useState('');
+  const [error, setError] = useState('');
+  const [transactionId, setTransactionId] = useState('');
+
   useEffect(() => {
-    // Initialize localCart with default quantity of 1 if not present
     const initializedCart = cart.map(item => ({
       ...item,
       quantity: item.quantity || 1,
     }));
     setLocalCart(initializedCart);
   }, [cart]);
+
+  const totalPrice = localCart.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0);
+
   useEffect(() => {
     if (totalPrice > 0) {
-        axiosSecure.post('/create-payment-intent', { price:totalPrice })
-            .then(res => {
-                console.log(res.data.clientSecret)
-                setClientSecret(res.data.clientSecret);
-            })
+      axiosSecure.post('/create-payment-intent', { price: totalPrice })
+        .then(res => {
+          console.log('Client Secret:', res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        })
+        .catch(error => {
+          console.error('Error fetching client secret:', error);
+          setError('Failed to initialize payment.');
+        });
     }
-}, [totalPrice, axiosSecure])
-  
+  }, [totalPrice, axiosSecure]);
+
   const handleSubmit = async (event) => {
-  
     event.preventDefault();
-    if (!stripe || !elements) {
-      return;
-    }
+    if (!stripe || !elements) return;
+
     const card = elements.getElement(CardElement);
-    if (card === null) {
-      return;
-    }
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card
+    if (card === null) return;
+
+    const { error: paymentError, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card,
     });
 
-    if (error) {
-      console.error("Payment error:", error);
-      setError(error.message);
-    } else {
-      console.log("Payment method:", paymentMethod);
-      setError('')
-      // Handle successful payment here (e.g., show success message, navigate to invoice page)
+    if (paymentError) {
+      setError(paymentError.message);
+      return;
     }
-    const {paymentIntent, error: confirmError}  = await stripe.confirmCardPayment(clientSecret,{
-        payment_method: {
-            card: card,
-            billing_details: {
-                email: user.email || 'annonyomous',
-                fullName: user.displayName || 'annonyomous'
-            }
+  else{
+ console.log(paymentMethod)
+  }
+  
+    const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+        billing_details: {
+          email: user?.email || 'anonymous',
+          name: user?.displayName || 'anonymous',
+        },
+      },
+    });
 
-        }
-    })
-    if(confirmError){
-        console.log('confirm error')
+    if (confirmError) {
+      setError(confirmError.message);
+      return;
     }
-    else{
-        console.log('paymentIntent',paymentIntent)
+
+    if (paymentIntent.status === 'succeeded') {
+      setTransactionId(paymentIntent.id);
+      Swal.fire('Success', 'Payment successful!', 'success');
+      console.log('Payment successful:', paymentIntent);
+    } else {
+      setError('Payment not successful');
     }
   };
 
@@ -96,9 +107,10 @@ const ChekoutFrom = () => {
       <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
-      <p className="text-red-500">{error}</p>
+      {error && <p className="text-red-500">{error}</p>}
+      {transactionId && <p className="text-green-600">Your transaction ID: {transactionId}</p>}
     </form>
   );
 };
 
-export default ChekoutFrom;
+export default CheckoutForm;
